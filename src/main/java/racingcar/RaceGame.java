@@ -5,28 +5,32 @@ import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Race;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RaceGame {
 
     private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     public void run() {
-        Cars cars = getCars();
-        Race race = getRace(cars);
+        Cars cars = createCarsFromUserInput();
+        Race race = createRaceFromUserInput(cars);
     }
 
-    private Cars getCars() {
+    private Cars createCarsFromUserInput() {
+        outputView.printRequestCarNameMessage();
         String[] carNames = inputView.requestCarName();
-        return parseToCars(carNames);
+        return convertToCars(carNames);
     }
 
-    private Cars parseToCars(String[] carNames) {
+    private Cars convertToCars(String[] carNames) {
         return new Cars(Arrays.stream(carNames)
                 .map(Car::new)
                 .toList());
     }
 
-    private Race getRace(Cars cars) {
+    private Race createRaceFromUserInput(Cars cars) {
+        outputView.printRequestRaceCountMessage();
         int raceCount = inputView.requestRaceCount();
         return new Race(cars, raceCount);
     }
