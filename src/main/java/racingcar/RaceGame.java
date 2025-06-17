@@ -4,7 +4,7 @@ import java.util.Arrays;
 import racingcar.model.Car;
 import racingcar.model.CarName;
 import racingcar.model.Cars;
-import racingcar.model.Race;
+import racingcar.model.RaceCount;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -15,7 +15,7 @@ public class RaceGame {
 
     public void run() {
         Cars cars = createCarsFromUserInput();
-        Race race = createRaceFromUserInput(cars);
+        RaceCount raceCount = createRaceFromUserInput(cars);
     }
 
     private Cars createCarsFromUserInput() {
@@ -31,9 +31,9 @@ public class RaceGame {
                 .toList());
     }
 
-    private Race createRaceFromUserInput(Cars cars) {
+    private RaceCount createRaceFromUserInput(Cars cars) {
         outputView.printRequestRaceCountMessage();
         int raceCount = inputView.requestRaceCount();
-        return new Race(cars, raceCount);
+        return new RaceCount(raceCount);
     }
 }
