@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Cars {
@@ -17,6 +19,19 @@ public class Cars {
 
     public void moveOrStopAll() {
         cars.forEach(Car::moveOrStop);
+    }
+
+    public RaceWinner getRaceWinner() {
+        Position maxPosition = getMaxPosition();
+        List<Car> winners = cars.stream()
+                .filter(car -> car.isSamePosition(maxPosition))
+                .toList();
+
+        return new RaceWinner(winners);
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(this.cars);
     }
 
     private void validate(List<Car> cars) {
@@ -41,5 +56,13 @@ public class Cars {
                 .map(Car::getCarName)
                 .distinct()
                 .count();
+    }
+
+    private Position getMaxPosition() {
+        List<Position> positions = cars.stream()
+                .map(Car::getPosition)
+                .toList();
+
+        return Collections.max(positions);
     }
 }

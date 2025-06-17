@@ -5,6 +5,7 @@ import racingcar.model.Car;
 import racingcar.model.CarName;
 import racingcar.model.Cars;
 import racingcar.model.RaceCount;
+import racingcar.model.RaceWinner;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -18,6 +19,8 @@ public class RaceGame {
         RaceCount raceCount = createRaceFromUserInput(cars);
 
         startRace(raceCount, cars);
+
+        printRaceWinners(cars);
     }
 
     private Cars createCarsFromUserInput() {
@@ -47,5 +50,10 @@ public class RaceGame {
     private void playOneRound(Cars cars) {
         cars.moveOrStopAll();
         outputView.printCars(cars.getCars());
+    }
+
+    private void printRaceWinners(Cars cars) {
+        RaceWinner raceWinner = cars.getRaceWinner();
+        outputView.printRaceWinners(raceWinner.getWinningCars());
     }
 }

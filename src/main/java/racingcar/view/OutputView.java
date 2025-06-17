@@ -34,4 +34,14 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public void printRaceWinners(List<Car> winningCars) {
+        List<String> winnerNames = winningCars.stream()
+                .map(Car::getCarName)
+                .map(CarName::getName)
+                .toList();
+
+        String winners = String.join(", ", winnerNames);
+        System.out.println("최종 우승자 : " + winners);
+    }
 }
