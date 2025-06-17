@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 
     private static final String NUMBER_FORMAT_ERROR_MESSAGE = "숫자만 입력해야 합니다.";
-
     private static final String DELIMITER = ",";
 
     public String[] requestCarName() {

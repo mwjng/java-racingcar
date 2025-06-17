@@ -25,6 +25,10 @@ public class Car {
         return this.carName;
     }
 
+    public Position getPosition() {
+        return this.position;
+    }
+
     private boolean canMove() {
         int randomNumber = Randoms.pickNumberInRange(MINIMUM_RANDOM_NUMBER, MAXIMUM_RANDOM_NUMBER);
         return randomNumber >= MOVING_STANDARD_NUMBER;

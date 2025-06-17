@@ -12,6 +12,12 @@ public class RaceCount {
         this.count = count;
     }
 
+    public void repeat(Runnable runnable) {
+        for (int i = 0; i < this.count; i++) {
+            runnable.run();
+        }
+    }
+
     private void validateCount(int count) {
         if (count < MINIMUM_COUNT) {
             throw new IllegalArgumentException(RACE_COUNT_ERROR_MESSAGE);

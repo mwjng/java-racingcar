@@ -16,6 +16,8 @@ public class RaceGame {
     public void run() {
         Cars cars = createCarsFromUserInput();
         RaceCount raceCount = createRaceFromUserInput(cars);
+
+        startRace(raceCount, cars);
     }
 
     private Cars createCarsFromUserInput() {
@@ -35,5 +37,15 @@ public class RaceGame {
         outputView.printRequestRaceCountMessage();
         int raceCount = inputView.requestRaceCount();
         return new RaceCount(raceCount);
+    }
+
+    private void startRace(RaceCount raceCount, Cars cars) {
+        outputView.printResultMessage();
+        raceCount.repeat(() -> playOneRound(cars));
+    }
+
+    private void playOneRound(Cars cars) {
+        cars.moveOrStopAll();
+        outputView.printCars(cars.getCars());
     }
 }
