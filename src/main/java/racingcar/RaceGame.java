@@ -2,6 +2,7 @@ package racingcar;
 
 import java.util.Arrays;
 import racingcar.model.Car;
+import racingcar.model.CarName;
 import racingcar.model.Cars;
 import racingcar.model.Race;
 import racingcar.view.InputView;
@@ -25,6 +26,7 @@ public class RaceGame {
 
     private Cars convertToCars(String[] carNames) {
         return new Cars(Arrays.stream(carNames)
+                .map(CarName::new)
                 .map(Car::new)
                 .toList());
     }
